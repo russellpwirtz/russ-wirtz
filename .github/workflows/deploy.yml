@@ -30,5 +30,17 @@ jobs:
         npm install -g @serverless/components
         npm install --save @sls-next/lambda-at-edge
         serverless config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    - name: Install AWS SAM
+      uses: aws-actions/setup-sam@v1
+
+    - name: Create env.yml file
+      run: |
+        cat << EOF > env.yml
+        prod:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        EOF
+
     - name: Deploy Next.js app
-      run: components deploy --component @sls-next/lambda-at-edge --config serverless.yml
+      run: components deploy --component @sls-next/lambda-at-edge --config serverless.yml --stage prod --inputs.envFile=env.yml
