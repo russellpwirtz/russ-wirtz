@@ -1,0 +1,76 @@
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.profileImage {
+  border-radius: 50%;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.content {
+  padding: 2rem;
+}
+
+.lead {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.text {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.animatedBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(135deg, #639fd7 25%, transparent 25%) 0 0,
+    linear-gradient(225deg, #F9D423 25%, transparent 25%) 50px 50px,
+    linear-gradient(315deg, #FF4E50 25%, transparent 25%) 50px -50px,
+    linear-gradient(45deg, #22B573 25%, transparent 25%) 0 0;
+  background-size: 100px 100px;
+  background-color: #568ec7;
+  animation: moveBg 12s linear infinite alternate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+@keyframes moveBg {
+  0% {
+    background-position: 0 0, 50px 50px, 50px -50px, 0 0;
+  }
+
+  100% {
+    background-position: 100px 100px, 0 0, 0 0, -100px -100px;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.whiteBox {
+  background-color: white;
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 20px;
+}
