@@ -1,0 +1,5 @@
+component: "@sls-next/lambda-at-edge"
+name: nextjsApp
+inputs:
+  domain: ["www", "russwirtz.com"]
+  bucketName: russwirtz.com
