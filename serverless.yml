@@ -1,5 +1,10 @@
-component: "@sls-next/lambda-at-edge"
-name: nextjsApp
-inputs:
-  domain: ["www", "russwirtz.com"]
-  bucketName: russwirtz.com
+russwirtz:
+  component: "@sls-next/serverless-component@latest" 
+  inputs:
+    bucketName: russwirtz-nextjs-app 
+    cloudfront:
+      distributionId: bluth
+      defaults: 
+        forward:
+          headers: [Host] 
+    domain: ["www", "russwirtz.com"] 
