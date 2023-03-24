@@ -30,6 +30,5 @@ jobs:
         npm install -g @serverless/components
         npm install --save @sls-next/lambda-at-edge
         serverless config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
     - name: Deploy Next.js app
-      run: serverless --component @sls-next/lambda-at-edge --config serverless.yml
+      run: components deploy --component @sls-next/lambda-at-edge --config serverless.yml
