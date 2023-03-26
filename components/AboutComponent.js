@@ -3,12 +3,15 @@ import Image from "next/image";
 import styles from "../styles/AboutComponent.module.css";
 import React, { useRef, useState } from 'react';
 import { useChatgpt } from '../lib/hooks/useChatgpt';
+import useColorApi from '../lib/hooks/useColorApi';
 
 const AboutComponent = () => {
   const inputRef = useRef(null);
   const [userQuestion, setUserQuestion] = useState('');
+  const [userResponse, setUserResponse] = useState('');
   const [submitted, setSubmitted] = useState(false);
-  const { data: messageContent, error: errorMessage } = useChatgpt(userQuestion);
+  const { data: chatbotReponse, error: errorMessage } = useChatgpt(userQuestion);
+  const { data: color, error: colorError } = useColorApi(userQuestion, chatbotReponse);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -45,10 +48,11 @@ const AboutComponent = () => {
                     </Button>
                   </Form>
                   <div className="message-container mt-4">
+                    {colorError ? <p>Error fetching background color: {colorError}</p> : null}
                     {errorMessage ? (
                       <p>Error: {errorMessage}</p>
-                    ) : messageContent ? (
-                      <p>{messageContent}</p>
+                    ) : chatbotReponse ? (
+                      <p>{chatbotReponse}</p>
                     ) : submitted ? (
                       <p>Loading...</p>
                     ) : (
