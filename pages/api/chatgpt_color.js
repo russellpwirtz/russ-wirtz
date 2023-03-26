@@ -11,11 +11,12 @@ export default async function handler(req, res) {
       'Authorization': 'Bearer ' + process.env.OPENAI_API_KEY,
     };
 
-    const system_message = `You are a mood translation bot. 
-    Your goal is to take input dialog and translate it to a hex color based on the mood.
-    You are free to use whatever means to find a color, but you will always find a color. 
+    const system_message = `You are a mood translation API.
+    Your goal is to take input dialog and translate it to hex color based on the mood, and respond in json format.
+    You will find five colors that work well together in a color scheme - one for the background, and four for quadrants 
+    of a square.
     Try to base the color you choose on how the text emotionally feels.
-    Always provide a hex color with the leading #, and nothing else.
+    Always provide a hex color with the leading #.
     `
 
     let apiBody = "[User]: " + inputText + "|[Chatbot]: " + responseText;
@@ -28,8 +29,8 @@ export default async function handler(req, res) {
         {
           role: 'system', content: system_message
         },
-        { role: 'user', content: "[User]: I am feeling so lucky today.|[Chatbot]: Pass on some of that luck to me!" },
-        { role: 'assistant', content: '#8BC34A' },
+        { role: 'user', content: "[User]: I am feeling so happy today!|[Chatbot]: That makes me feel happy!" },
+        { role: 'assistant', content: '{"background":"#FFF59D", "quadrant1":"#FFF176", "quadrant2":"#FFD54F", "quadrant3":"#FFB900", "quadrant4":"#FFC107", "reason": "Yellow and its variations indicate happiness and positivity."}' },
         { role: 'user', content: apiBody },
       ],
     };
@@ -45,8 +46,17 @@ export default async function handler(req, res) {
       if (responseJson.error) {
         res.status(400).json({ error: responseJson.error.message });
       } else {
-        res.status(200).json({ messageContent: responseJson.choices[0].message.content });
+        const responseContent = responseJson.choices[0].message.content;
+        const messageObj = JSON.parse(responseContent);
+        const background = messageObj.background;
+        const quadrant1 = messageObj.quadrant1;
+        const quadrant2 = messageObj.quadrant2;
+        const quadrant3 = messageObj.quadrant3;
+        const quadrant4 = messageObj.quadrant4;
+
+        res.status(200).json({ background, quadrant1, quadrant2, quadrant3, quadrant4 });
       }
+
     } catch (error) {
       res.status(500).json({ error: 'An error occurred while fetching data.' });
     }
