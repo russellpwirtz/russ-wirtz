@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Banner from "../components/Banner";
 import styles from "../styles/AboutComponent.module.css";
 
-const About = () => {
+export default function About() {
   return (
     <>
       <Head>
@@ -13,10 +13,10 @@ const About = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.animatedBackground}></div>
-      <Banner />
-      <AboutComponent />
+      <div className={styles.pageWrapper}>
+        <Banner />
+        <AboutComponent />
+      </div>
     </>
   );
 };
-
-export default About;
