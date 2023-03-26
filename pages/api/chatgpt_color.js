@@ -53,8 +53,11 @@ export default async function handler(req, res) {
         const quadrant2 = messageObj.quadrant2;
         const quadrant3 = messageObj.quadrant3;
         const quadrant4 = messageObj.quadrant4;
+        const reason = messageObj.reason;
 
-        res.status(200).json({ background, quadrant1, quadrant2, quadrant3, quadrant4 });
+        console.log("color reason: " + reason);
+
+        res.status(200).json({ background, quadrant1, quadrant2, quadrant3, quadrant4, reason });
       }
 
     } catch (error) {
