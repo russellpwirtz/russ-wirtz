@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "../styles/AboutComponent.module.css";
 import React, { useRef, useState } from 'react';
 import { useChatgpt } from '../lib/hooks/useChatgpt';
-import useColorApi from '../lib/hooks/useColorApi';
+import useMoodApi from '../lib/hooks/useMoodApi';
 
 const AboutComponent = () => {
   const inputRef = useRef(null);
@@ -11,7 +11,7 @@ const AboutComponent = () => {
   const [userResponse, setUserResponse] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const { data: chatbotReponse, error: errorMessage } = useChatgpt(userQuestion);
-  const { color, reason: colorReason, error: colorError } = useColorApi(userQuestion, chatbotReponse);
+  const { reason: colorReason, error: colorError } = useMoodApi(userQuestion, chatbotReponse);
   const [activeTab, setActiveTab] = useState("form");
 
   const handleSubmit = (event) => {
@@ -37,7 +37,7 @@ const AboutComponent = () => {
               </Col>
             </Row>
             <Tabs activeKey={activeTab} onSelect={(k) => setActiveTab(k)} className="mt-4">
-              <Tab eventKey="form" title="Form">
+              <Tab eventKey="form" title="Chat">
                 <Container className="mt-4">
                   <Form onSubmit={handleSubmit} className="question-form">
                     <Form.Group controlId="userQuestion">
@@ -61,7 +61,7 @@ const AboutComponent = () => {
                   </div>
                 </Container>
               </Tab>
-              <Tab eventKey="color" title="Color">
+              <Tab eventKey="color" title="Debug">
                 <Container className="mt-4">
                   {colorReason ? <p>Color reasoning: {colorReason}</p> : null}
                   {colorError ? <p>Error fetching background color: {colorError}</p> : null}

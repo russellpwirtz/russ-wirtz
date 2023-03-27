@@ -41,7 +41,7 @@
     linear-gradient(45deg, var(--color-shape-4, #22B573) 25%, transparent 25%) 0 0;
   background-size: 100px 100px;
   background-color: var(--background-color, #568ec7);
-  animation: moveBg 12s linear infinite alternate;
+  animation: moveBg var(--animation-speed, 12s) linear infinite alternate;
   display: flex;
   justify-content: center;
   align-items: center;
