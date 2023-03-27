@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 25%;
+}
+
+.arrow {
+  font-size: 4rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 2rem;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 15%;
+  height: 100%;
+  padding: 8rem;
+  border: 4px solid white;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: contain;
+}
+
+.nameplate {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 2px solid white;
+  border-radius: 0.5rem;
+}

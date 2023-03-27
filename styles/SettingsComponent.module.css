@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  color: #4a8;
+  margin-bottom: 20px;
+}
+
+.settingRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.settingInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.settingName {
+  font-size: 24px;
+  color: #4a8;
+  margin-bottom: 5px;
+}
+
+.settingDescription {
+  font-size: 14px;
+  color: #666;
+}
+
+.settingControl {
+  display: flex;
+}
