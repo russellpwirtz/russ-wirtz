@@ -4,13 +4,13 @@ import styles from '../styles/PetComponent.module.css';
 import usePetAction from '../lib/hooks/usePetAction';
 import { useState } from 'react';
 
-function getBarColor(value) {
+function getEmoji(value) {
   if (value < 10) {
-    return 'red';
+    return '💔';
   } else if (value >= 10 && value < 70) {
-    return 'yellow';
+    return '😐';
   } else {
-    return 'green';
+    return '😄';
   }
 }
 
@@ -23,37 +23,11 @@ function PetComponent({ petName }) {
 
   return (
     <div className={styles.container}>
-      <div className={styles.indicators}>
-        <div className={styles.indicator}>
-          <p>Health</p>
-          <div className={styles.bar}>
-            <div
-              className={styles.barInner}
-              style={{ width: `${health}%`, backgroundColor: getBarColor(health) }}
-            />
-          </div>
-          <p>{health}%</p>
-        </div>
-        <div className={styles.indicator}>
-          <p>Hunger</p>
-          <div className={styles.bar}>
-            <div
-              className={styles.barInner}
-              style={{ width: `${hunger}%`, backgroundColor: getBarColor(hunger) }}
-            />
-          </div>
-          <p>{hunger}%</p>
-        </div>
-        <div className={styles.indicator}>
-          <p>Happiness</p>
-          <div className={styles.bar}>
-            <div
-              className={styles.barInner}
-              style={{ width: `${happiness}%`, backgroundColor: getBarColor(happiness) }}
-            />
-          </div>
-          <p>{happiness}%</p>
-        </div>
+      <h1 className={styles.title}>{petName}</h1>
+      <div className={styles.status}>
+        <p>Health: {getEmoji(health)}</p>
+        <p>Hunger: {getEmoji(hunger)}</p>
+        <p>Happiness: {getEmoji(happiness)}</p>
       </div>
 
       <div className={styles.petImageWrapper}>
@@ -68,16 +42,16 @@ function PetComponent({ petName }) {
 
       <div className={styles.buttons}>
         <button className={styles.button} onClick={() => setUserAction('Feed')}>
-          Feed
+          🍲 Feed
         </button>
         <button className={styles.button} onClick={() => setUserAction('Play')}>
-          Play
+          🎾 Play
         </button>
         <button className={styles.button} onClick={() => setUserAction('Sleep')}>
-          Sleep
+          😴 Sleep
         </button>
       </div>
-    </div >
+    </div>
   );
 }
 

@@ -2,6 +2,7 @@
 import { useRouter } from 'next/router';
 import PetComponent from '../components/PetComponent';
 import PetMenuComponent from '../components/PetMenuComponent';
+import styles from "../styles/PetPageLayout.module.css";
 
 export default function Pet() {
   const router = useRouter();
@@ -9,8 +10,8 @@ export default function Pet() {
 
   return (
     <>
-      <div className="pageLayout">
-        <PetMenuComponent />
+      <PetMenuComponent />
+      <div className={styles.pageLayout}>
         {name ? <PetComponent petName={name} /> : <p>Loading...</p>}
       </div>
     </>

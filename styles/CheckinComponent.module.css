@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
+
 .container {
   display: flex;
   flex-direction: column;
@@ -5,15 +7,13 @@
   width: 100%;
   padding: 20px;
   font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #c0ceff, #f0fff1);
-  margin-top: 50px;
 }
 
 .header {
   font-size: 48px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #f06;
+  color: #5a3b3b;
 }
 
 .rewardTable {
@@ -33,12 +33,13 @@
   background-color: #fff;
   border-radius: 5px;
   margin-bottom: 10px;
+  font-size: 1.25rem;
 }
 
 .checkinButton {
-  background-color: #f06;
+  background-color: #5a3b3b;
   border: none;
-  border-radius: 5px;
+  border-radius: 1rem;
   color: #fff;
   font-size: 24px;
   font-weight: bold;
@@ -49,11 +50,11 @@
 }
 
 .checkinButton:hover {
-  background-color: #f00;
+  background-color: #8a635d;
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .checkedIn {
-  background-color: #4a8;
+  background-color: #3a573a;
   cursor: not-allowed;
 }

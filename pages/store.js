@@ -1,17 +1,20 @@
 import React from 'react';
 import StoreComponent from '../components/StoreComponent';
 import PetMenuComponent from '../components/PetMenuComponent';
+import styles from "../styles/PetPageLayout.module.css";
 
 const StorePage = () => {
   const user = {
-    username: 'JohnDoe',
+    username: 'John Doe',
     tokens: 100,
   };
 
   return (
     <div>
       <PetMenuComponent />
-      <StoreComponent user={user} />
+      <div className={styles.pageLayout}>
+        <StoreComponent user={user} />
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import DailyCheckin from "../components/CheckinComponent";
 import PetMenuComponent from '../components/PetMenuComponent';
+import styles from "../styles/PetPageLayout.module.css";
 
 const CheckinPage = () => {
   const user = {
@@ -14,7 +15,9 @@ const CheckinPage = () => {
 
   return <>
     <PetMenuComponent />
-    <DailyCheckin user={user} pets={pets} />
+    <div className={styles.pageLayout}>
+      <DailyCheckin user={user} pets={pets} />
+    </div>
   </>;
 };
 

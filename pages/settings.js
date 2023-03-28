@@ -1,6 +1,7 @@
 import React from 'react';
 import SettingsComponent from '../components/SettingsComponent';
 import PetMenuComponent from '../components/PetMenuComponent';
+import styles from "../styles/PetPageLayout.module.css";
 
 const StorePage = () => {
   const user = {
@@ -11,7 +12,9 @@ const StorePage = () => {
   return (
     <div>
       <PetMenuComponent />
-      <SettingsComponent user={user} />
+      <div className={styles.pageLayout}>
+        <SettingsComponent user={user} />
+      </div>
     </div>
   );
 };
