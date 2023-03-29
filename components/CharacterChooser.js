@@ -5,20 +5,29 @@ import styles from "../styles/CharacterChooser.module.css";
 
 const pets = [
   {
-    name: 'Dog',
-    img: 'https://picsum.photos/id/237/500/500',
+    name: 'Fluffy',
+    img: 'https://www.lifeinnorway.net/wp-content/uploads/2018/08/male-norwegian-forest-cat.jpg',
+    id: 2
   },
   {
-    name: 'Cat',
-    img: 'https://picsum.photos/id/40/500/500',
-  },
-  {
-    name: 'Van',
+    name: 'Vanny',
     img: 'https://picsum.photos/id/183/500/500',
+    id: 1,
   },
   {
-    name: 'Deer',
-    img: 'https://picsum.photos/id/790/500/500',
+    name: 'Slip n Slide',
+    img: 'https://maymont.org/wp-content/uploads/2023/01/banner_otter.jpg.webp',
+    id: 3,
+  },
+  {
+    name: 'Joey',
+    img: 'https://maymont.org/wp-content/uploads/2020/07/banner-frog.jpg.webp',
+    id: 4,
+  },
+  {
+    name: 'Catie',
+    img: 'https://news.clas.ufl.edu/wp-content/uploads/sites/4/2020/06/AdobeStock_345118478-copy-1440x961-1-e1613512040649.jpg',
+    id: 5,
   },
 ];
 
@@ -41,7 +50,7 @@ const CharacterChooser = () => {
           &lt;
         </button>
         <div className={styles.contentWrapper}>
-          <Link legacyBehavior href={`/pet?name=${pets[currentIndex].name}`}>
+          <Link legacyBehavior href={`/pet?id=${pets[currentIndex].id}`}>
             <a className={styles.imageLink}>
               <div className={styles.imageWrapper}>
                 <Image

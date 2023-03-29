@@ -5,7 +5,7 @@ const nextConfig = {
     OPENAI_API_KEY: process.env.OPENAI_API_KEY
   },
   images: {
-    domains: ['picsum.photos'],
+    domains: ['picsum.photos', 'maymont.org', 'news.clas.ufl.edu', 'www.lifeinnorway.net'],
   },
 }
 

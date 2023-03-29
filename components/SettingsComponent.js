@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from '../styles/SettingsComponent.module.css';
+import { signOut } from 'next-auth/react';
 
 const SettingRow = ({ settingName, description, children }) => (
   <div className={styles.settingRow}>
@@ -30,7 +31,11 @@ const SettingsComponent = () => {
           <option>Private</option>
         </select>
       </SettingRow>
-      {/* Add more settings as needed */}
+      <SettingRow settingName="Logout" description="Logout from your account.">
+        <button className={styles.logoutButton} onClick={signOut()}>
+          Logout
+        </button>
+      </SettingRow>
     </div>
   );
 };

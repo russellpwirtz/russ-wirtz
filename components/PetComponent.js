@@ -14,30 +14,33 @@ function getEmoji(value) {
   }
 }
 
-function PetComponent({ petName }) {
-  const health = 80;
-  const hunger = 40;
-  const happiness = 70;
+function PetComponent({ pet }) {
   const [userAction, setUserAction] = useState(null);
   const { data, error } = usePetAction(userAction);
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>{petName}</h1>
+      <h1 className={styles.title}>{pet.petName}</h1>
       <div className={styles.status}>
-        <p>Health: {getEmoji(health)}</p>
-        <p>Hunger: {getEmoji(hunger)}</p>
-        <p>Happiness: {getEmoji(happiness)}</p>
+        <p>Health: {getEmoji(pet.health)}</p>
+        <p>Hunger: {getEmoji(pet.hunger)}</p>
+        <p>Happiness: {getEmoji(pet.happiness)}</p>
       </div>
 
       <div className={styles.petImageWrapper}>
         <Image
-          src="https://picsum.photos/id/237/500/500"
-          alt={petName}
+          src={pet.image}
+          alt={pet.petName}
           width={300}
           height={300}
           className={styles.petImage}
         />
+      </div>
+      <div>
+        {pet.name}
+      </div>
+      <div>
+        {pet.type}
       </div>
 
       <div className={styles.buttons}>

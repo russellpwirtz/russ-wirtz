@@ -1,10 +1,13 @@
 import DailyCheckin from "../components/CheckinComponent";
 import PetMenuComponent from '../components/PetMenuComponent';
 import styles from "../styles/PetPageLayout.module.css";
+import useRedirect from '../lib/hooks/useRedirect';
 
-const CheckinPage = () => {
+const CheckinPage = (props) => {
+  useRedirect(props, true);
+
   const user = {
-    username: "JohnDoe",
+    username: props.user.name,
     tokens: 1000,
   };
 
