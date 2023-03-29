@@ -11,6 +11,10 @@ const CheckinComponent = ({ user, pets }) => {
     }
   };
 
+  if (user === null) {
+    return <div>Please log in.</div>
+  }
+
   return (
     <div className={styles.container}>
       <h1 className={styles.header}>Daily Checkin</h1>
