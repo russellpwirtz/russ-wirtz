@@ -3,7 +3,7 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  background-color: #fff;
+  background-color: var(--primary-color);
   padding: 10px 0;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
@@ -15,4 +15,5 @@
 .icon {
   width: 32px;
   height: 32px;
+  fill: var(--text-color);
 }

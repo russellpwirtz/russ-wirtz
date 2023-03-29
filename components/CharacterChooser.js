@@ -35,26 +35,31 @@ const CharacterChooser = () => {
 
   return (
     <div className={styles.container}>
-      <button className={styles.arrow} onClick={handlePrev}>
-        &lt;
-      </button>
-      <div className={styles.contentWrapper}>
-        <div className={styles.imageWrapper}>
-          <Image
-            src={pets[currentIndex].img}
-            alt={pets[currentIndex].name}
-            layout="fill"
-            objectFit="contain"
-            className={styles.image}
-          />
+      <h1 className={styles.title}>Pick Your Pet</h1>
+      <div className={styles.carousel}>
+        <button className={styles.arrow} onClick={handlePrev}>
+          &lt;
+        </button>
+        <div className={styles.contentWrapper}>
+          <Link legacyBehavior href={`/pet?name=${pets[currentIndex].name}`}>
+            <a className={styles.imageLink}>
+              <div className={styles.imageWrapper}>
+                <Image
+                  src={pets[currentIndex].img}
+                  alt={pets[currentIndex].name}
+                  layout="fill"
+                  objectFit="contain"
+                  className={styles.image}
+                />
+              </div>
+            </a>
+          </Link>
+          <p className={styles.petName}>{pets[currentIndex].name}</p>
         </div>
-        <Link legacyBehavior href={`/pet?name=${pets[currentIndex].name}`}>
-          <a className={styles.nameplate}>{pets[currentIndex].name}</a>
-        </Link>
+        <button className={styles.arrow} onClick={handleNext}>
+          &gt;
+        </button>
       </div>
-      <button className={styles.arrow} onClick={handleNext}>
-        &gt;
-      </button>
     </div>
   );
 };

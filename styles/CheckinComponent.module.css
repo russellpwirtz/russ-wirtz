@@ -13,7 +13,7 @@
   font-size: 48px;
   font-weight: bold;
   margin-bottom: 20px;
-  color: #5a3b3b;
+  color: var(--primary-color);
 }
 
 .rewardTable {
@@ -37,7 +37,7 @@
 }
 
 .checkinButton {
-  background-color: #5a3b3b;
+  background-color: var(--primary-color);
   border: none;
   border-radius: 1rem;
   color: #fff;
@@ -50,7 +50,7 @@
 }
 
 .checkinButton:hover {
-  background-color: #8a635d;
+  background-color: var(--secondary-color);
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
