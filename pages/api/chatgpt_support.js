@@ -4,10 +4,14 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     const userQuestion = req.body.userQuestion;
 
+    let secrets = JSON.parse(process.env.secrets);
+    console.error("Got secrets? " + secrets ? JSON.stringify(secrets) : ":(");
+    console.error("Got api key? " + secrets.OPENAI_API_KEY);
+
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
     const apiHeaders = {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + JSON.parse(process.env.secrets).OPENAI_API_KEY,
+      'Authorization': 'Bearer ' + secrets.OPENAI_API_KEY,
     };
 
     const system_message = `You are a helpful chat support bot for visitors to this website, writted by and about a man named Russ.
