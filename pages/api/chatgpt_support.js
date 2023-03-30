@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     let apiKey;
     try {
       apiKey = process.env.OPENAI_API_KEY;
-      console.error("Got api key? " + apiKey.substring(0, 4));
+      console.error("Got api key? " + apiKey);
     } catch (error) {
       console.error("Error parsing api key: " + error.message);
       res.status(500).json({ error: 'An error occurred on the server.' });
