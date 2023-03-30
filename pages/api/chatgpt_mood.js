@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
     const apiHeaders = {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + process.env.secrets.OPENAI_API_KEY,
+      'Authorization': 'Bearer ' + JSON.parse(process.env.secrets).OPENAI_API_KEY,
     };
 
     const system_message = `You are a mood translation API.
