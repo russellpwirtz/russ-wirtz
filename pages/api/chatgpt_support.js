@@ -4,6 +4,18 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     const userQuestion = req.body.userQuestion;
 
+    if (!process.env.OPENAI_TEST) {
+      console.error("NO OPENAI_TEST");
+    } else {
+      console.error("OPENAI_TEST: " + process.env.OPENAI_TEST);
+    }
+
+    if (!process.env.OPENAI_TEST2) {
+      console.error("NO OPENAI_TEST2");
+    } else {
+      console.error("OPENAI_TEST2: " + process.env.OPENAI_TEST2);
+    }
+
     let apiKey;
     if (!process.env.OPENAI_API_KEY) {
       try {
