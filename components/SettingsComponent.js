@@ -32,7 +32,10 @@ const SettingsComponent = () => {
         </select>
       </SettingRow>
       <SettingRow settingName="Logout" description="Logout from your account.">
-        <button className={styles.logoutButton} onClick={signOut()}>
+        <button className={styles.logoutButton} onClick={(e) => {
+          e.preventDefault()
+          signOut({ callbackUrl: "/welcome" })
+        }}>
           Logout
         </button>
       </SettingRow>

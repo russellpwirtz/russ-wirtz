@@ -17,7 +17,7 @@ const CheckinComponent = ({ user, pets }) => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.header}>Daily Checkin</h1>
+      <h1 className={styles.header}>Daily Checkin for {user.name}</h1>
       <div className={styles.rewardTable}>
         <div className={styles.tableHeader}>
           <div>Pet Name</div>

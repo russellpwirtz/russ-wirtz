@@ -2,41 +2,27 @@ import DailyCheckin from "../components/CheckinComponent";
 import PetMenuComponent from '../components/PetMenuComponent';
 import styles from "../styles/PetPageLayout.module.css";
 import useRedirect from '../lib/hooks/useRedirect';
-import { signIn, useSession } from 'next-auth/react';
+import { useSession } from "next-auth/react"
 
 const CheckinPage = (props) => {
-  // useRedirect(true);
-  const { data: session, status } = useSession();
+  useRedirect(true);
+  const { data } = useSession()
 
-  if (status === 'loading') {
-    return <div>loading...</div>
-  }
+  let pets = [
+    { id: 1, name: "Fluffy", type: "Dog", health: 90, happiness: 80, tokens: 50 },
+    { id: 2, name: "Whiskers", type: "Cat", health: 85, happiness: 95, tokens: 60 },
+  ];
 
-  if (status === 'unauthenticated') {
-    return <div>NOT AUTH...</div>
-  }
-
-  let user;
-  let pets;
-  if (props.isLoggedIn) {
-    user = {
-      username: props.user.name,
-      tokens: 1000,
-    };
-
-    pets = [
-      { id: 1, name: "Fluffy", type: "Dog", health: 90, happiness: 80, tokens: 50 },
-      { id: 2, name: "Whiskers", type: "Cat", health: 85, happiness: 95, tokens: 60 },
-    ];
-  } else {
-    user = null;
-    pets = null;
+  if (!data) {
+    return <>
+      <div>Please log in</div>
+    </>
   }
 
   return <>
     <PetMenuComponent />
     <div className={styles.pageLayout}>
-      <DailyCheckin user={user} pets={pets} />
+      <DailyCheckin user={data.user} pets={pets} />
     </div>
   </>;
 };

@@ -1,4 +1,4 @@
-import CharacterChooser from "@/components/CharacterChooser";
+import CharacterChooser from "../components/CharacterChooser";
 import PetMenuComponent from '../components/PetMenuComponent';
 import styles from "../styles/PetPageLayout.module.css";
 
