@@ -21,7 +21,7 @@ export default async function handler(req, res) {
 
       try {
         let secrets4 = JSON.parse(process.env.AMPLIFY_SECRETS2).OPENAI_API_KEY;
-        console.error("Got secrets4? " + secrets3);
+        console.error("Got secrets4? " + secrets4);
       } catch (error) {
         console.error("no secrets 4")
       }
