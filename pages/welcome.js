@@ -1,14 +1,21 @@
 import React from 'react';
 import WelcomeComponent from '../components/WelcomeComponent';
 import PetMenuComponent from '../components/PetMenuComponent';
+import { useSession } from "next-auth/react"
 
 const WelcomePage = () => {
-  const user = {
-    username: 'JohnDoe',
-    avatar: 'https://picsum.photos/id/786/100/100',
-    tokens: 120,
-    lastCheckin: '2023-03-26T14:30:00.000Z',
-  };
+  const { data } = useSession()
+
+  let user;
+  if (data && data.user) {
+    user = {
+      username: data.user.name,
+      avatar: data.user.image,
+      tokens: 120,
+    };
+  } else {
+    user = {}
+  }
 
   return <>
     <PetMenuComponent />

@@ -1,13 +1,15 @@
 import React from 'react';
 import styles from '../styles/WelcomeComponent.module.css';
 import { FaCoins, FaPaw } from 'react-icons/fa';
-// import Progress from './Progress'; // added Progress component for a progress bar
 import tree from '../styles/tree.svg';
 import bush from '../styles/bush.svg';
 import Image from 'next/image';
+import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const WelcomeComponent = ({ user }) => {
   const { username, avatar, tokens, lastCheckin } = user;
+  const router = useRouter();
 
   return (
     <div className={styles.container}>
@@ -19,7 +21,7 @@ const WelcomeComponent = ({ user }) => {
         </h1>
         <div className={styles.userInfo}>
           {avatar && <Image src={avatar} alt="User Avatar" className={styles.avatar} width='20' height='20' />}
-          <span className={styles.username}>{username}</span>
+          <span className={styles.username}>{username ? username : ""}</span>
         </div>
       </div>
       <div className={styles.info}>
@@ -27,12 +29,13 @@ const WelcomeComponent = ({ user }) => {
           <FaCoins className={styles.tokenIcon} />
           <span className={styles.tokenCount}>{tokens}</span>
         </div>
-        <div className={styles.lastCheckin}>
-          Last check-in: {new Date(lastCheckin).toLocaleString()}
-        </div>
-        {/* <Progress percentage={50} />  */}
       </div>
-      <button className={styles.getStartedBtn}>Get Started</button>
+      <button className={styles.getStartedBtn} onClick={(e) => {
+        e.preventDefault()
+        username ? router.push('/checkin') : signIn()
+      }}>
+        Get Started
+      </button>
       <div className={styles.petRelated}>
         <FaPaw className={styles.petIcon} />
       </div>

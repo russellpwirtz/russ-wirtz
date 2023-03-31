@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['picsum.photos', 'maymont.org', 'news.clas.ufl.edu', 'www.lifeinnorway.net'],
+    domains: ['lh3.googleusercontent.com', 'picsum.photos', 'maymont.org', 'news.clas.ufl.edu', 'www.lifeinnorway.net'],
   },
 }
 

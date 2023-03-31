@@ -3,8 +3,11 @@ import { useRouter } from 'next/router';
 import PetComponent from '../components/PetComponent';
 import PetMenuComponent from '../components/PetMenuComponent';
 import styles from "../styles/PetPageLayout.module.css";
+import useRedirect from '../lib/hooks/useRedirect';
 
 export default function Pet() {
+  useRedirect(true);
+
   const router = useRouter();
   const { id } = router.query;
 
