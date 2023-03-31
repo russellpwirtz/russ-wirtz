@@ -5,10 +5,23 @@ export default async function handler(req, res) {
     const inputText = req.body.inputText;
     const responseText = req.body.responseText;
 
+    let apiKey;
+    if (!process.env.OPENAI_API_KEY) {
+      try {
+        apiKey = JSON.parse(process.env.AMPLIFY_SECRETS).OPENAI_API_KEY;
+      } catch (error) {
+        console.error("Error parsing api key: " + error.message);
+        res.status(500).json({ error: 'An error occurred on the server.' });
+        return;
+      }
+    } else {
+      apiKey = process.env.OPENAI_API_KEY;
+    }
+
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
     const apiHeaders = {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + process.env.OPENAI_API_KEY,
+      'Authorization': 'Bearer ' + apiKey,
     };
 
     const system_message = `You are a mood translation API.

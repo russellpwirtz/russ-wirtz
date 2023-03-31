@@ -5,33 +5,16 @@ export default async function handler(req, res) {
     const userQuestion = req.body.userQuestion;
 
     let apiKey;
-    try {
-      // let secrets = process.env.AMPLIFY_SECRETS;
-      // console.error("Got secrets1? " + secrets);
-
-      let secrets2 = process.env.AMPLIFY_SECRETS2;
-      console.error("Got secrets2? " + secrets2);
-
+    if (!process.env.OPENAI_API_KEY) {
       try {
-        let secrets3 = process.env.AMPLIFY_SECRETS2.OPENAI_API_KEY;
-        console.error("Got secrets3? " + secrets3);
+        apiKey = JSON.parse(process.env.AMPLIFY_SECRETS).OPENAI_API_KEY;
       } catch (error) {
-        console.error("no secrets 3")
+        console.error("Error parsing api key: " + error.message);
+        res.status(500).json({ error: 'An error occurred on the server.' });
+        return;
       }
-
-      try {
-        let secrets4 = JSON.parse(process.env.AMPLIFY_SECRETS2).OPENAI_API_KEY;
-        console.error("Got secrets4? " + secrets4);
-      } catch (error) {
-        console.error("no secrets 4")
-      }
-
-      apiKey = JSON.parse(secrets).OPENAI_API_KEY;
-      console.error("Got api key? " + secrets);
-    } catch (error) {
-      console.error("Error parsing api key: " + error.message);
-      res.status(500).json({ error: 'An error occurred on the server.' });
-      return;
+    } else {
+      apiKey = process.env.OPENAI_API_KEY;
     }
 
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
