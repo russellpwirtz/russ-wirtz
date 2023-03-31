@@ -8,12 +8,14 @@ export default async function handler(req, res) {
       console.error("NO OPENAI_TEST");
     } else {
       console.error("OPENAI_TEST: " + process.env.OPENAI_TEST);
+      res.status(500).json({ error: process.env.OPENAI_TEST.substring(0, 9) });
     }
 
     if (!process.env.OPENAI_TEST2) {
       console.error("NO OPENAI_TEST2");
     } else {
       console.error("OPENAI_TEST2: " + process.env.OPENAI_TEST2);
+      res.status(500).json({ error: process.env.OPENAI_TEST2.substring(0, 9) });
     }
 
     let apiKey;
