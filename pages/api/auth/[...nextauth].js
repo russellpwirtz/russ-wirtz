@@ -1,25 +1,24 @@
 import NextAuth from 'next-auth'
 import GoogleProvider from "next-auth/providers/google";
-
-// if (!process.env.GOOGLE_CLIENT_ID) {
-//   try {
-//     process.env.GOOGLE_CLIENT_ID = JSON.parse(process.env.AMPLIFY_SECRETS).GOOGLE_CLIENT_ID;
-//     process.env.GOOGLE_CLIENT_SECRET = JSON.parse(process.env.AMPLIFY_SECRETS).GOOGLE_CLIENT_SECRET;
-//     process.env.NEXTAUTH_SECRET = JSON.parse(process.env.AMPLIFY_SECRETS).NEXTAUTH_SECRET;
-//     console.error("Set next auth secret: " + process.env.NEXTAUTH_SECRET);
-//   } catch (error) {
-//     console.error("Error parsing api key: " + error.message);
-//     res.status(500).json({ error: 'An error occurred on the server.' });
-//     return;
-//   }
-// }
+import getNextAuthSecret from '../../../lib/util/nextAuthSecret';
+import getGoogleCredentials from '../../../lib/util/googleProviderCredentials';
 
 export default NextAuth({
   providers: [
     GoogleProvider({
-      clientId: JSON.parse(process.env.AMPLIFY_SECRETS).GOOGLE_CLIENT_ID,
-      clientSecret: JSON.parse(process.env.AMPLIFY_SECRETS).GOOGLE_CLIENT_SECRET,
+      clientId: getGoogleCredentials().clientId,
+      clientSecret: getGoogleCredentials().clientSecret,
+      // redirectUri: '/api/auth/callback/google',
     })
   ],
-  secret: JSON.parse(process.env.AMPLIFY_SECRETS).NEXTAUTH_SECRET,
+  secret: getNextAuthSecret(),
+  callbacks: {
+    async jwt({ token }) {
+      console.log("jwt callback! " + token)
+      token.userRole = "admin"
+      return token
+    },
+  },
 })
+
+

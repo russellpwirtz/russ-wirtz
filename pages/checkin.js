@@ -2,9 +2,19 @@ import DailyCheckin from "../components/CheckinComponent";
 import PetMenuComponent from '../components/PetMenuComponent';
 import styles from "../styles/PetPageLayout.module.css";
 import useRedirect from '../lib/hooks/useRedirect';
+import { signIn, useSession } from 'next-auth/react';
 
 const CheckinPage = (props) => {
-  useRedirect(props, true);
+  // useRedirect(true);
+  const { data: session, status } = useSession();
+
+  if (status === 'loading') {
+    return <div>loading...</div>
+  }
+
+  if (status === 'unauthenticated') {
+    return <div>NOT AUTH...</div>
+  }
 
   let user;
   let pets;
