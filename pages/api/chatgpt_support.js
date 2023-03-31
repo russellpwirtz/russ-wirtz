@@ -6,11 +6,25 @@ export default async function handler(req, res) {
 
     let apiKey;
     try {
-      let secrets = process.env.AMPLIFY_SECRETS;
-      console.error("Got secrets? " + secrets);
+      // let secrets = process.env.AMPLIFY_SECRETS;
+      // console.error("Got secrets1? " + secrets);
 
       let secrets2 = process.env.AMPLIFY_SECRETS2;
-      console.error("Got secrets? " + secrets2);
+      console.error("Got secrets2? " + secrets2);
+
+      try {
+        let secrets3 = process.env.AMPLIFY_SECRETS2.OPENAI_API_KEY;
+        console.error("Got secrets3? " + secrets3);
+      } catch (error) {
+        console.error("no secrets 3")
+      }
+
+      try {
+        let secrets4 = JSON.parse(process.env.AMPLIFY_SECRETS2).OPENAI_API_KEY;
+        console.error("Got secrets4? " + secrets3);
+      } catch (error) {
+        console.error("no secrets 4")
+      }
 
       apiKey = JSON.parse(secrets).OPENAI_API_KEY;
       console.error("Got api key? " + secrets);
