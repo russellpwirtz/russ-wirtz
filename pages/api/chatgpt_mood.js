@@ -32,8 +32,6 @@ export default async function handler(req, res) {
     let apiBody = "[User]: " + inputText + "|[Chatbot]: " + responseText;
 
     console.log("api body: " + apiBody);
-    console.error("test env: " + process.env.TEST_ENV);
-
 
     const requestBody = {
       model: 'gpt-3.5-turbo',
