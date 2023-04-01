@@ -6,6 +6,7 @@ import bush from '../styles/bush.svg';
 import Image from 'next/image';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const WelcomeComponent = ({ user }) => {
   const { username, avatar, tokens, lastCheckin } = user;
@@ -41,7 +42,9 @@ const WelcomeComponent = ({ user }) => {
       <div className={styles.petRelated}>
         <FaPaw className={styles.petIcon} />
       </div>
-      <a href="/about" className={styles.aboutLink}>About Us</a>
+      <Link legacyBehavior href="/about">
+        <a className={styles.aboutLink}>About Us</a>
+      </Link>
     </div>
   );
 };
