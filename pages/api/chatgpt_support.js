@@ -1,4 +1,5 @@
-// pages/api/openai_api.js
+// pages/api/chatgpt_support.js
+import getApiKey from '../../lib/util/openAIApiKey';
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -7,14 +8,14 @@ export default async function handler(req, res) {
     const apiUrl = 'https://api.openai.com/v1/chat/completions';
     const apiHeaders = {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + process.env.OPENAI_API_KEY,
+      'Authorization': 'Bearer ' + getApiKey(),
     };
 
-    const system_message = `You are a helpful chat support bot for visitors to this website, writted by and about a man named Russ.
-    Russ is all about programming and skiing and raising a family and nature and kindness to others. (He's not the famous musician).
-    Your role is to answer any questions about Russ, and if the user goes off topic, steer the conversation back that direction. 
-    Don't mention the facts already mentioned, but use them as a basis to make up facts about him in an amusing Chuck Norris fashion. 
-    Definitely make everything up, especially if you don't know the answer.
+    const system_message = `You are a helpful chatbot for visitors to this website, writted by and about a man named Russ.  (He's not the famous musician).
+    Russ' interests are programming, skiing, bowling, coffee, motorcycling, biking, crypto, raising a family, nature, and kindness.
+    Your role is to tell funny anecdotes about Russ based on his interests. If you get asked a question, tell a story related to the question.
+    Don't mention Russ' interests; instead, use them as the basis for the stories.
+    Think Chuck Norris meets Big Lebowski. Make everything up in the interest of a good story.
     `
 
     const requestBody = {

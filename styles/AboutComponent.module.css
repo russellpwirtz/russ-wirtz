@@ -35,13 +35,13 @@
   position: relative;
   width: 100%;
   background:
-    linear-gradient(135deg, #639fd7 25%, transparent 25%) 0 0,
-    linear-gradient(225deg, #F9D423 25%, transparent 25%) 50px 50px,
-    linear-gradient(315deg, #FF4E50 25%, transparent 25%) 50px -50px,
-    linear-gradient(45deg, #22B573 25%, transparent 25%) 0 0;
+    linear-gradient(135deg, var(--color-shape-1, #639fd7) 25%, transparent 25%) 0 0,
+    linear-gradient(225deg, var(--color-shape-2, #F9D423) 25%, transparent 25%) 50px 50px,
+    linear-gradient(315deg, var(--color-shape-3, #FF4E50) 25%, transparent 25%) 50px -50px,
+    linear-gradient(45deg, var(--color-shape-4, #22B573) 25%, transparent 25%) 0 0;
   background-size: 100px 100px;
   background-color: var(--background-color, #568ec7);
-  animation: moveBg 12s linear infinite alternate;
+  animation: moveBg var(--animation-speed, 12s) linear infinite alternate;
   display: flex;
   justify-content: center;
   align-items: center;

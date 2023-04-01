@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&display=swap");
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.rewardTable {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.tableHeader,
+.tableRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 10px;
+  font-weight: bold;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+}
+
+.checkinButton {
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 1rem;
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.checkinButton:hover {
+  background-color: var(--secondary-color);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.checkedIn {
+  background-color: #3a573a;
+  cursor: not-allowed;
+}

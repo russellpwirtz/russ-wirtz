@@ -6,13 +6,13 @@
 .brand {
   font-size: 2rem;
   font-weight: bold;
-  color: #333;
+  color: var(--text-color);
   text-decoration: none;
   transition: color 0.2s ease-in-out;
 }
 
 .brand:hover {
-  color: #007bff;
+  color: var(--primary-color);
 }
 
 .toggle {
@@ -26,12 +26,12 @@
 
 .link {
   font-size: 1.2rem;
-  color: #333;
+  color: var(--text-color);
   text-decoration: none;
   transition: color 0.2s ease-in-out;
   margin-left: 1.5rem;
 }
 
 .link:hover {
-  color: #007bff;
+  color: var(--primary-color);
 }

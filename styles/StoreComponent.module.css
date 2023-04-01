@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tokens {
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.tokenIcon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  color: #4a8;
+}
+
+.tokenCount {
+  color: #4a8;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.item {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.itemIcon {
+  font-size: 48px;
+  color: #4a8;
+  margin-bottom: 10px;
+}
+
+.itemName {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4a8;
+  margin-bottom: 5px;
+}
+
+.itemDescription {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.buyButton {
+  background-color: #f06;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.buyButton:hover {
+  background-color: #f00;
+}
+
+.buyButton:disabled {
+  background-color: #ccc;
+  color: #888;
+  cursor: not-allowed;
+}

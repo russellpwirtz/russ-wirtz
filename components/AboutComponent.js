@@ -1,9 +1,9 @@
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, Form, Button, Tabs, Tab } from "react-bootstrap";
 import Image from "next/image";
 import styles from "../styles/AboutComponent.module.css";
 import React, { useRef, useState } from 'react';
 import { useChatgpt } from '../lib/hooks/useChatgpt';
-import useColorApi from '../lib/hooks/useColorApi';
+import useMoodApi from '../lib/hooks/useMoodApi';
 
 const AboutComponent = () => {
   const inputRef = useRef(null);
@@ -11,7 +11,8 @@ const AboutComponent = () => {
   const [userResponse, setUserResponse] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const { data: chatbotReponse, error: errorMessage } = useChatgpt(userQuestion);
-  const { data: color, error: colorError } = useColorApi(userQuestion, chatbotReponse);
+  const { reason: colorReason, error: colorError } = useMoodApi(userQuestion, chatbotReponse);
+  const [activeTab, setActiveTab] = useState("form");
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -35,9 +36,9 @@ const AboutComponent = () => {
                 />
               </Col>
             </Row>
-            <Row>
-              <Col>
-                <Container className="mt-5">
+            <Tabs activeKey={activeTab} onSelect={(k) => setActiveTab(k)} className="mt-4">
+              <Tab eventKey="form" title="Chat">
+                <Container className="mt-4">
                   <Form onSubmit={handleSubmit} className="question-form">
                     <Form.Group controlId="userQuestion">
                       <Form.Control ref={inputRef} type="text" placeholder="Type your question here" className="question-input form-control float" />
@@ -60,8 +61,14 @@ const AboutComponent = () => {
                     )}
                   </div>
                 </Container>
-              </Col>
-            </Row>
+              </Tab>
+              <Tab eventKey="color" title="Debug">
+                <Container className="mt-4">
+                  {colorReason ? <p>Color reasoning: {colorReason}</p> : null}
+                  {colorError ? <p>Error fetching background color: {colorError}</p> : null}
+                </Container>
+              </Tab>
+            </Tabs>
           </Container>
         </div>
       </div>
