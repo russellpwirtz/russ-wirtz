@@ -33,11 +33,11 @@
   --callout-border-rgb: 172, 175, 176;
   --card-rgb: 180, 185, 188;
   --card-border-rgb: 131, 134, 135;
-  --primary-color: #FF9800;
-  --secondary-color: #4CAF50;
-  --tertiary-color: #2196F3;
-  --text-color: #37474F;
-  --subtext-color: #757575;
+  --primary-color: #3D5A80;
+  --secondary-color: #98C1D9;
+  --tertiary-color: #E0FBFC;
+  --text-color: #293241;
+  --subtext-color: #EE6C4D;
 }
 
 @media (prefers-color-scheme: dark) {

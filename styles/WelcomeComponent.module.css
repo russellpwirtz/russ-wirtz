@@ -142,3 +142,19 @@
   bottom: 30px;
   right: 70px;
 }
+
+.aboutLink {
+  position: absolute;
+  bottom: 20px;
+  display: inline-block;
+  color: #ffffff;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.aboutLink:hover {
+  color: #0071ff;
+}

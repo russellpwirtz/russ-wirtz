@@ -16,12 +16,14 @@ const WelcomeComponent = ({ user }) => {
       <Image src={tree} alt="Biome Element 1" className={`${styles.biomeElement} ${styles.biomeElement1}`} />
       <Image src={bush} alt="Biome Element 2" className={`${styles.biomeElement} ${styles.biomeElement2}`} />
       <div className={styles.header}>
-        <h1 className={styles.welcomeMessage}>
-          Welcome to <span className={styles.username}>Tarma Pets</span>!
-        </h1>
-        <div className={styles.userInfo}>
-          {avatar && <Image src={avatar} alt="User Avatar" className={styles.avatar} width='20' height='20' />}
-          <span className={styles.username}>{username ? username : ""}</span>
+        <div className={styles.header}>
+          <h1 className={styles.welcomeMessage}>
+            Welcome to <span className={styles.username}>Tarma Pets</span>!
+          </h1>
+          <div className={styles.userInfo}>
+            {avatar && <Image src={avatar} alt="User Avatar" className={styles.avatar} width='20' height='20' />}
+            <span className={styles.username}>{username ? username : ""}</span>
+          </div>
         </div>
       </div>
       <div className={styles.info}>
@@ -39,6 +41,7 @@ const WelcomeComponent = ({ user }) => {
       <div className={styles.petRelated}>
         <FaPaw className={styles.petIcon} />
       </div>
+      <a href="/about" className={styles.aboutLink}>About Us</a>
     </div>
   );
 };
