@@ -49,6 +49,7 @@ const AboutComponent = () => {
                     </Button>
                   </Form>
                   <div className="message-container mt-4">
+                    {colorError ? <p>Error fetching background color: {colorError}</p> : null}
                     {errorMessage ? (
                       <p>Error: {errorMessage}</p>
                     ) : chatbotReponse ? (
